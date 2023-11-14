@@ -170,19 +170,16 @@ int main() {
 
     double t = M_PI / 4.0;
 
-    // Print coordinates and derivatives of all curves at t = PI/4
     for (const auto& curve : curves) {
         printCoordinatesAndDerivatives(*curve, t);
     }
 
-    // Populate the second container with circles from the first container
     for (const auto& curve : curves) {
         if (dynamic_cast<Circle*>(curve)) {
             circles.push_back(static_cast<Circle*>(curve));
         }
     }
 
-    // Sort the second container in ascending order of circles' radii
     circles.sort(compareCirclesByRadius);
 
     std::cout << "Circles after sort:" << std::endl;
@@ -191,7 +188,6 @@ int main() {
         printCoordinatesAndDerivatives(*circle, t);
     }
 
-    // Compute the total sum of radii of all curves in the second container
     double totalSum = 0.0;
     for (const auto& circle : circles) {
         totalSum += circle->getRadius();
@@ -199,7 +195,6 @@ int main() {
 
     std::cout << "Total sum of radii: " << totalSum << std::endl;
 
-    // Clean up memory
     for (const auto& curve : curves) {
         delete curve;
     }
